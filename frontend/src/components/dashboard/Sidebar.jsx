@@ -47,14 +47,14 @@ const Sidebar = () => {
                        
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                <Link to={"/dashboard/manajemen-akun/manajemen-penyewa"}>
+                                <Link to={"/dashboard/manajemen-akun/penyewa"}>
                                         <p className="block px-4 py-2 hover:bg-blue-200 rounded-md text-md">
                                             Akun Penyewa
                                         </p>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/dashboard/manajemen-akun/manajemen-pengelola"}>
+                                <Link to={"/dashboard/manajemen-akun/pengelola"}>
                                     <p className="block px-4 py-2 hover:bg-blue-200 rounded-md text-md">
                                         Akun Pengelola
                                     </p>
