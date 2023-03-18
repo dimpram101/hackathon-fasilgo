@@ -11,7 +11,7 @@ const Sidebar = () => {
                     <div className="flex flex-row gap-3 items-center mt-6 ">
                         <img src={'/fasilgo.png'}
                             alt='fasilgo.png'
-                            class="h-10" />
+                            className="h-10" />
                         <h2 className="text-4xl font-semibold">FasilGO</h2>
                     </div>
                 </Link>
@@ -40,19 +40,26 @@ const Sidebar = () => {
                         Manajemen Akun
                     </p>
                 </Link> */}
-                <button onClick={() => setOpen(!open)} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="justify-between  w-full bg-[#88C3FF] hover:bg-blue-200    font-medium rounded-lg px-2.5 py-2.5 text-center inline-flex items-center" type="button">Manajemen Akun <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                <button onClick={() => setOpen(!open)} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="justify-between  w-full bg-[#88C3FF] hover:bg-blue-200    font-medium rounded-lg px-2.5 py-2.5 text-center inline-flex items-center" type="button">Manajemen Akun <svg className="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
 
                 {open && (
-                    <div id="dropdown" class="z-10  divide-y divide-gray-100 rounded-lg  w-full  dark:bg-gray-700">
+                    <div id="dropdown" className="z-10  divide-y divide-gray-100 rounded-lg  w-full  dark:bg-gray-700">
                        
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Penyewa</a>
+                                <Link to={"/dashboard/manajemen-akun/manajemen-penyewa"}>
+                                        <p className="block px-4 py-2 hover:bg-blue-200 rounded-md text-md">
+                                            Akun Penyewa
+                                        </p>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Pengelola</a>
+                                <Link to={"/dashboard/manajemen-akun/manajemen-pengelola"}>
+                                    <p className="block px-4 py-2 hover:bg-blue-200 rounded-md text-md">
+                                        Akun Pengelola
+                                    </p>
+                                </Link>
                             </li>
-
                         </ul>
                     </div>
                 )}

@@ -2,22 +2,30 @@ import { Link, Route, Routes } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
 import ManajemenFasilitas from "../components/dashboard/ManajemenFasilitas";
 import EditAkun from "../components/dashboard/EditAkun";
+<<<<<<< HEAD
 import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
+=======
+import ManajemenTransaksi from "../components/dashboard/ManajemenTransaksi";
+import ManajemenPenyewa from "./dashboard/ManajemenPenyewa";
+import ManajemenPengelola from "./dashboard/ManajemenPengelola";
+>>>>>>> 62682c231e752bdf4e4ba5d9d2b39ccec4e0c444
 
 const Dashboard = () => {
   return (
     <div className="flex flex-row">
       <Sidebar />
-      <div className="flex flex-col mx-auto w-full p-2">
+      <div className="flex flex-col mx-auto w-full p-10 bg-[#f0f0f0]">
         <Routes>
             <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />}/>
             <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<ManajemenFasilitas />}/>
             <Route path="/manajemen-fasilitas/edit/:id" element={<EditFasilitas />}/>
             <Route path="/manajemen-transaksi" element={<h2>HEYOW</h2>}/>
             <Route path="/manajemen-akun" element={<h2>HEYOW</h2>}/>
+            <Route path="/manajemen-akun/manajemen-pengelola" element={<ManajemenPengelola />}/>
+            <Route path="/manajemen-akun/manajemen-penyewa" element={<ManajemenPenyewa />}/>
             <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>
-            <Route path="/riwayat-transaksi" element={<h2>HEYOW</h2>}/>
-            <Route path="/fasilitas" element={<h2>HEYOW</h2>}/>
+            <Route path="/riwayat-transaksi" element={<h2>Manj</h2>}/>
+            <Route path="/sewa-fasilitas" element={<h2>HEYOW</h2>}/>
             <Route path="/edit-akun" element={<EditAkun />}/>
             {/* <Route path="/logout"> */}
         </Routes>
