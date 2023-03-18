@@ -4,6 +4,7 @@ import { Users, KTPUser, Transaction, TransactionPhoto, Review } from "../models
 export const inputKTP = async (req, res) => {
   const userId = res.locals.userId;
   const file = req.file;
+  console.log(file);
   const fileName = file.originalname.split('.')[0];
   KTPUser.create({
     userId,

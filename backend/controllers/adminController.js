@@ -1,5 +1,5 @@
 import { userRegistrationSchema } from "../utils/joyVerification.js";
-import { Users, Facility, FacilityPhoto, Transaction } from "../models/Association.js";
+import { Users, Facility, FacilityPhoto, Transaction, KTPUser } from "../models/Association.js";
 import bcrypt from "bcrypt";
 import UserKTP from "../models/KTPUser.js";
 
@@ -190,10 +190,15 @@ const updateTransaction = async (req, res) => {
 
 const getAkunPenyewa = (req, res) => {
   Users.findAll({
-    include: {
-      model: Facility,
-      attributes: ["id"]
-    }
+    include: [
+      {
+        model: Facility,
+        attributes: ["id"]
+      },
+      {
+        model: KTPUser
+      }
+    ]
   }).then((user) => {
     return res.status(200).json({ msg: "Data ditemukan!", payload: user })
   }).catch(err => res.status(400).json({ msg: "ERROR", payload: err }))

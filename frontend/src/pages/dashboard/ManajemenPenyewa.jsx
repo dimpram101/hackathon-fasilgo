@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../../api/api";
 
 const ManajemenPenyewa = () => {
@@ -27,10 +28,10 @@ const ManajemenPenyewa = () => {
       })
       .then((res) => {
         setUsers(res.data.payload);
-        // console.log(users);
       });
   }, [refresh]);
 
+  console.log(users);
   return (
     <div className="mt-8 w-11/12 mx-auto">
       <div className="relative overflow-x-auto bg-gray-500 shadow-md sm:rounded-lg">
@@ -74,7 +75,9 @@ const ManajemenPenyewa = () => {
                     <td className="px-6 py-4 text-center">
                       {user.user_ktp ? (
                         <a
-                          href="#"
+                          href={`http://localhost:5000/${user.user_ktp.path.split(
+                            "public"
+                          )[1]}`} target="_blank"
                           className="font-medium text-blue-600 hover:underline"
                         >
                           Foto
