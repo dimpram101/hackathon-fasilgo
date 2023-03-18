@@ -49,7 +49,7 @@ const Sidebar = () => {
 
                 {open && (
                     <div id="dropdown" class="z-10  divide-y divide-gray-100 rounded-lg  w-full  dark:bg-gray-700">
-                       
+
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
                                 < Link to={"/dashboard/manajemen-akun/akun-penyewa"}>

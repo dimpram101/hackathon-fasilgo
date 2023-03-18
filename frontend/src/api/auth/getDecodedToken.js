@@ -7,8 +7,7 @@ const getDecodedToken = async (token) => {
     // console.log(response);
     return response.data.payload;
   } catch (error) {
-    console.log(err)
-    
+    console.log(error)
   }
 }
 

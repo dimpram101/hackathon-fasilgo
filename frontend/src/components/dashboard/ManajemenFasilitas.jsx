@@ -1,139 +1,137 @@
-const ManajemenFasilitas = () => {
-  return (
-    <div className="bg-red-500">
-      <button
-        type="button"
-        class="rounded hover:rounded-lg bg-[#006DAA] p-10 mt-10 ml-20"
-      >
-        Tambahkan Fasilitas
-      </button>
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import api from "../../api/api";
 
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-11/12 mt-5 text-sm mx-auto text-midle text-gray-500 ">
-          <thead class="text-xs text-gray-700 bg-gray-50">
+const ManajemenFasilitas = () => {
+  const [facilities, setFacilities] = useState([]);
+  const [success, setSuccess] = useState("");
+  const [refresh, refreshToggle] = useState(false);
+
+  const deleteFasilitas = (id) => {
+    api
+      .delete("/admin/facility/" + id, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then(() => {
+        refreshToggle((prev) => !prev)
+        setSuccess("Berhasil menghapus data")
+        setTimeout(() => setSuccess(false), 3000)
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getFacilities = () => {
+    api
+      .request({
+        url: "/facilities/",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setFacilities(res.data.payload);
+        // console.log(res.data.payload)
+        // setFacilities(res.data.payload);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getFacilities();
+  }, [refresh]);
+
+  return (
+    <div className="py-4 px-4 w-full">
+      <Link
+        to={"/dashboard/manajemen-fasilitas/tambah-fasilitas"}
+        className="bg-green-500 rounded-t-lg pt-2 pb-2 pl-2 pr-2 ml-4 mr-4"
+      >
+        Tambahkan Fasilitas +
+      </Link>
+
+      <div className="w-full overflow-x-auto mx-auto shadow-md sm:rounded-lg">
+        <table className="w-full mt-5 text-sm mx-auto text-midle text-gray-500 ">
+          <thead className="text-xs text-gray-700 bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 ID Fasilitas
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Nama Fasilitas
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Alamat
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Harga Sewa
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3 w-[30%]">
                 Deskripsi
               </th>
-              <th scope="col" class="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Rekening
               </th>
-              <th scope="col" class="px-6 py-3">
-                Koordinat
+              <th scope="col" className="px-6 py-3">
+                Pengelola
               </th>
-              <th scope="col" class="px-6 py-3">
-                <span class="sr-only">Edit</span>
+              <th scope="col" className="px-6 py-3">
+                Edit
               </th>
-              <th scope="col" class="px-6 py-3">
-                <span class="sr-only">Hapus</span>
+              <th scope="col" className="px-6 py-3">
+                Hapus
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-bold text-gray-500 whitespace-nowrap"
-              >
-                01
-              </th>
-              <td class="px-6 py-4">BSCC DOME Balikpapan</td>
-              <td class="px-6 py-4">Jl. Ruhui Rahayu No.1, Sepinggan, Kecamatan Balikpapan Selatan, Kota Balikpapan, Kalimantan Timur 76115</td> 
-              <td class="px-6 py-4">Rp. 15.550.000,-</td>
-              <td class="px-6 py-4">Menyewa paket A dengan pemakaian 6 jam</td>
-              <td class="px-6 py-4">1180212091</td>
-              <td class="px-6 py-4">1.1.1.1</td>
-              <td class="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 hover:underline"
+            {facilities.map((facility, index) => (
+              <tr className="bg-white border-b" key={facility.id}>
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-bold text-gray-500 whitespace-nowrap"
                 >
-                  Edit
-                </a>
-              </td>
-              <td class="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  class="font-medium text-red-600 hover:underline"
-                >
-                  Hapus
-                </a>
-              </td>
-            </tr>
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-bold text-gray-500 whitespace-nowrap"
-              >
-                01
-              </th>
-              <td class="px-6 py-4">BSCC DOME Balikpapan</td>
-              <td class="px-6 py-4">Jl. Ruhui Rahayu No.1, Sepinggan, Kecamatan Balikpapan Selatan, Kota Balikpapan, Kalimantan Timur 76115</td> 
-              <td class="px-6 py-4">Rp. 15.550.000,-</td>
-              <td class="px-6 py-4">Menyewa paket A dengan pemakaian 6 jam</td>
-              <td class="px-6 py-4">1180212091</td>
-              <td class="px-6 py-4">1.1.1.1</td>
-              <td class="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 hover:underline"
-                >
-                  Edit
-                </a>
-              </td>
-              <td class="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  class="font-medium text-red-600 hover:underline"
-                >
-                  Hapus
-                </a>
-              </td>
-            </tr>
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-bold text-gray-500 whitespace-nowrap"
-              >
-                01
-              </th>
-              <td class="px-6 py-4">BSCC DOME Balikpapan</td>
-              <td class="px-6 py-4">Jl. Ruhui Rahayu No.1, Sepinggan, Kecamatan Balikpapan Selatan, Kota Balikpapan, Kalimantan Timur 76115</td> 
-              <td class="px-6 py-4">Rp. 15.550.000,-</td>
-              <td class="px-6 py-4">Menyewa paket A dengan pemakaian 6 jam</td>
-              <td class="px-6 py-4">1180212091</td>
-              <td class="px-6 py-4">1.1.1.1</td>
-              <td class="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 hover:underline"
-                >
-                  Edit
-                </a>
-              </td>
-              <td class="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  class="font-medium text-red-600 hover:underline"
-                >
-                  Hapus
-                </a>
-              </td>
-            </tr>
+                  {facility.id}
+                </th>
+                <td className="px-6 py-4 break-all text-center">
+                  {facility.namaFasilitas}
+                </td>
+                <td className="px-6 py-4 break-all">{facility.alamat}</td>
+                <td className="px-6 py-4 break-all text-center">
+                  Rp.{facility.hargaSewa}
+                </td>
+                <td className="px-6 py-4 break-all">{facility.deskripsi}</td>
+                <td className="px-6 py-4 break-all text-center">
+                  {facility.rekening}
+                </td>
+                <td className="px-6 py-4 break-all text-center">
+                  {facility.user.fullname}
+                </td>
+                <td className="py-4 text-center break-all">
+                  <Link
+                    to={"/dashboard/manajemen-fasilitas/edit/" + facility.id}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Edit
+                  </Link>
+                </td>
+                <td className="py-4 text-center ">
+                  <button
+                    onClick={() => deleteFasilitas(facility.id)}
+                    className=" text-red-600 hover:underline"
+                  >
+                    Hapus
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+      </div>
+      <div className="">
+        {success && (<>
+          <p className="text-green-600 font-bold text-sm">Berhasil menghapus fasilitas!</p>
+        </>)}
       </div>
     </div>
   );

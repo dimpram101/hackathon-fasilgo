@@ -21,14 +21,14 @@ function App() {
         });
       });
     }
-  }, [auth, setAuth, token]);
+  }, [setAuth, token]);
 
   return (
     <Router>
       <div className="App">
         <AuthContext.Provider value={{ auth, setAuth }}>
           <Routes>
-            <Route path="/" forceRefresh={true} element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
