@@ -27,7 +27,7 @@ const Dashboard = () => {
           <Route path="/manajemen-akun/penyewa" element={<ManajemenPenyewa />}/>
           <Route path="/riwayat-transaksi" element={<RiwayatTransaksi />}/>
           <Route path="/fasilitas/" element={<FacilityCard />} />
-          <Route path="/fasilitas/detail-fasilitas" element={<DetailFacility />} />
+          <Route path="/fasilitas/detail-fasilitas/:id" element={<DetailFacility />} />
           <Route path="/edit-akun" element={<EditAkun />}/> 
           <Route path="/logout" /> 
         </Routes>
