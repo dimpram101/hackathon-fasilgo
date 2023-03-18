@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-row">
       <Sidebar />
-      <div className="flex flex-col mx-auto w-full p-10 bg-[#f0f0f0]">
+      <div className="flex flex-col mx-auto w-full p-10 h-screen bg-[#f0f0f0]">
         <Routes>
           <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />} />
           <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<h2>TESTTT</h2>} />

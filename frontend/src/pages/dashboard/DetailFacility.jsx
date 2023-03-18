@@ -1,10 +1,11 @@
 const DetailFacility = () => {
     return (
         <>
-            <div>
+            <div className="ml-80">
 
-
-                <h2 className="text-3xl font-bold">dawdawda</h2>
+                {/* Nama fasilitas */}
+                <h2 className="text-3xl font-bold">DOME</h2>
+                <img src={"../assets/krb.png"} alt="" />
 
             </div>
         </>
