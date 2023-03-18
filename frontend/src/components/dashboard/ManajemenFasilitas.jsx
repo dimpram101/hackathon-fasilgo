@@ -32,6 +32,8 @@ const ManajemenFasilitas = () => {
       })
       .then((res) => {
         setFacilities(res.data.payload);
+        // console.log(res.data.payload)
+        // setFacilities(res.data.payload);
       })
       .catch((err) => console.log(err));
   };

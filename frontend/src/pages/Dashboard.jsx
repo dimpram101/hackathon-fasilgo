@@ -5,28 +5,28 @@ import EditAkun from "../components/dashboard/EditAkun";
 import ManajemenTransaksi from "../components/dashboard/ManajemenTransaksi";
 import ManajemenPenyewa from "./dashboard/ManajemenPenyewa";
 import ManajemenPengelola from "./dashboard/ManajemenPengelola";
-import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas"
+import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
 
 const Dashboard = () => {
   return (
     <div className="flex flex-row">
       <Sidebar />
       <div className="flex flex-col mx-auto w-full p-10 bg-[#f0f0f0]">
-         <Routes>
-            <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />}/>
-            <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<ManajemenFasilitas />}/>
-            <Route path="/manajemen-fasilitas/edit/:id" element={<EditFasilitas />}/>
-            <Route path="/manajemen-transaksi" element={<ManajemenTransaksi />}/>
-            <Route path="/manajemen-transaksi/:id" element={<ManajemenTransaksi />}/>
-            <Route path="/manajemen-akun" element={<h2>HEYOW</h2>}/>
-            <Route path="/manajemen-akun/pengelola" element={<ManajemenPengelola />}/>
-            <Route path="/manajemen-akun/penyewa" element={<ManajemenPenyewa />}/>
-            <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>
-            <Route path="/riwayat-transaksi" element={<h2>Manj</h2>}/>
-            <Route path="/sewa-fasilitas" element={<h2>HEYOW</h2>}/>
-            <Route path="/edit-akun" element={<EditAkun />}/>
-            <Route path="/logout" />
-        </Routes> 
+        <Routes>
+          <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />} />
+          <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<h2>TESTTT</h2>} />
+          <Route path="/manajemen-fasilitas/edit/:id" element={<EditFasilitas />}/>
+          <Route path="/manajemen-transaksi" element={<ManajemenTransaksi />}/>
+          <Route path="/manajemen-transaksi/:id" element={<ManajemenTransaksi />}/>
+          <Route path="/manajemen-akun" element={<h2>HEYOW</h2>}/>
+          <Route path="/manajemen-akun/pengelola" element={<ManajemenPengelola />}/>
+          <Route path="/manajemen-akun/penyewa" element={<ManajemenPenyewa />}/>
+          <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>
+          <Route path="/riwayat-transaksi" element={<h2>Manj</h2>}/>
+          <Route path="/sewa-fasilitas" element={<h2>HEYOW</h2>}/>
+          <Route path="/edit-akun" element={<EditAkun />}/> 
+          <Route path="/logout" />
+        </Routes>
       </div>
     </div>
   );
