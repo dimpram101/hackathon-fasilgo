@@ -108,7 +108,7 @@ const ManajemenTransaksi = () => {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <Link
-                      to={"/dashboard/manajemen-transaksi/edit/"}
+                      to={"/dashboard/manajemen-transaksi/edit/"+trans.id}
                       className="text-blue-600 hover:underline"
                     >
                       Edit
