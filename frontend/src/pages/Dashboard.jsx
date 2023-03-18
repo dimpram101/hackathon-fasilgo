@@ -5,6 +5,10 @@ import EditAkun from "../components/dashboard/EditAkun";
 import ManajemenTransaksi from "../components/dashboard/ManajemenTransaksi";
 import ManajemenPenyewa from "./dashboard/ManajemenPenyewa";
 import ManajemenPengelola from "./dashboard/ManajemenPengelola";
+<<<<<<< HEAD
+=======
+import RiwayatTransaksi from "../components/dashboard/RiwayatTransaksi";
+>>>>>>> 7d2f6a93cfc62a2461fd8a9a6e589ad21eba3c3f
 import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
 
 const Dashboard = () => {
