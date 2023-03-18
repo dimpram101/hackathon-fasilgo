@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
-import Sidebar from "../component/Sidebar";
-import ManajemenFasilitas from "../component/dashboard/ManajemenFasilitas";
-import EditAkun from "../Component/dashboard/EditAkun";
+import Sidebar from "../components/dashboard/Sidebar";
+import ManajemenFasilitas from "../components/dashboard/ManajemenFasilitas";
+import EditAkun from "../components/dashboard/EditAkun";
 
 const Dashboard = () => {
   return (

@@ -8,6 +8,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [nomorHP, setNomorHP] = useState("");
   const [konfirmasiPassword, setKonfirmasiPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const registerHandle = (e) => {
@@ -29,7 +30,11 @@ const Register = () => {
         console.log(res);
         navigate("/login");
       })
-      .catch((err) => console.log(err));
+      .catch(({ response }) => {
+        console.log(response);
+        setError(response.data.msg);
+        setTimeout(() => setError(""), 3000)
+      });
   };
 
   return (
@@ -38,6 +43,13 @@ const Register = () => {
         <div className="text-dark text-3xl font-bold mb-10">
           <h1>REGISTER</h1>
         </div>
+        {error && (
+          <>
+            <div className="text-dark text-sm font-bold text-red-500 mb-10">
+              {error}
+            </div>
+          </>
+        )}
         <form className="w-10/12 mb-6" onSubmit={(e) => registerHandle(e)}>
           <div className="flex flex-col mb-5">
             <label className="block mb-2 text-sm font-medium text-gray-900">
@@ -52,17 +64,6 @@ const Register = () => {
           </div>
           <div className="flex flex-col mb-5">
             <label className="block mb-2 text-sm font-medium text-gray-900">
-              Nomor HP
-            </label>
-            <input
-              type="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              value={nomorHP}
-              onChange={(e) => setNomorHP(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col mb-5">
-            <label className="block mb-2 text-sm font-medium text-gray-900">
               Email
             </label>
             <input
@@ -70,6 +71,17 @@ const Register = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col mb-5">
+            <label className="block mb-2 text-sm font-medium text-gray-900">
+              Nomor HP
+            </label>
+            <input
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              value={nomorHP}
+              onChange={(e) => setNomorHP(e.target.value)}
             />
           </div>
           <div className="flex flex-col mb-5">
@@ -102,7 +114,10 @@ const Register = () => {
               </Link>{" "}
             </p>
           </div>
-          <button type="submit" className="border-2 rounded-xl py-1 px-5 bg-[#B9D6F2] hover:bg-blue-400">
+          <button
+            type="submit"
+            className="border-2 rounded-xl py-1 px-5 bg-[#B9D6F2] hover:bg-blue-400"
+          >
             Submit
           </button>
         </form>
