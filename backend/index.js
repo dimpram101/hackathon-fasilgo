@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import indexRoute from "./routes/index.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
+app.use(indexRoute)
 // try {
 //   await db.sync({ force: true });
 //   console.log("db connected")
