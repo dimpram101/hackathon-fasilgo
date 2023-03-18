@@ -42,8 +42,8 @@ const SliderFacility = () => {
 
                     <div className="  mx-auto h-[630px] w-[1280px]">
                         <Slider {...settings} ref={sliderRef}>
-                            {sliderContents.map((image) => (
-                                <div>
+                            {sliderContents.map((image, index) => (
+                                <div key={index}>
                                     <div className="bg-white rounded-3xl mx-auto w-[1200px] h-[535px]">
                                         <div className="flex p-12 mt-12">
                                             <div >

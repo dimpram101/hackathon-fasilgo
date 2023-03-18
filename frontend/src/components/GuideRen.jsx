@@ -37,7 +37,7 @@ const GuideRen = () => {
 
                     <div className="w-[570px] mx-auto" >
                         {GuideContent.map((item, index) => (
-                            <div >
+                            <div key={index}>
                                 <div className="flex mt-6">
                                     <div className="drop-shadow-xl px-4 py-2 rounded-full bg-blue-400 text-gray-800">
                                         <div key={index}>{index + 1} </div>
