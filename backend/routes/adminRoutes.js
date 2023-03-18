@@ -6,13 +6,18 @@ import {
   editFacility,
   insertNewFacility, 
   createAkunPengelola,
-  updateTransaction, 
+  updateTransaction,
+  getAkunPengelola,
+  getAkunPenyewa,
+  deleteAkun, 
 } from "../controllers/adminController.js";
-import facilityStorage from "../utils/storage/facilityStorage.js";
 
 const adminRoutes = Router();
 
 adminRoutes.post('/create-akun-pengelola', createAkunPengelola)
+adminRoutes.get('/get-akun-pengelola', getAkunPengelola)
+adminRoutes.get('/get-akun-penyewa', getAkunPenyewa)
+adminRoutes.delete('/delete-akun/:id', deleteAkun)
 
 adminRoutes.post('/create-new-facility', insertNewFacility)
 adminRoutes.put('/facility/:id', editFacility)

@@ -1,9 +1,18 @@
-import { Transaction, TransactionDocument, TransactionPhoto } from "../models/Association.js";
+import { Facility, Transaction, TransactionDocument, TransactionPhoto, Users } from "../models/Association.js";
 ////////////////////
 // Transaction
 ////////////////////
 const getAllTransaction = async (req, res) => {
-  Transaction.findAll().then(transactions => {
+  Transaction.findAll({
+    include: [
+      {
+        model: Users,
+        attributes: ['fullname']
+      },
+      { model: TransactionDocument },
+      { model: TransactionPhoto }
+    ]
+  }).then(transactions => {
     res.status(200).json({ msg: "Berhasil mendapatkan data transaksi", payload: transactions })
   }).catch(err => {
     res.status(400).json({ msg: "Berhasil mendapatkan data transaksi", payload: err })
@@ -13,9 +22,10 @@ const getAllTransaction = async (req, res) => {
 const getTransactionById = async (req, res) => {
   const { id } = req.params;
 
-  Transaction.findOne({
+  Transaction.findAll({
     where: { id },
     include: [
+      { model: Users },
       { model: TransactionDocument },
       { model: TransactionPhoto }
     ]
@@ -29,7 +39,31 @@ const getTransactionById = async (req, res) => {
   })
 }
 
+const getUserTransaction = async (req, res) => {
+  const userId = req.params.id;
+  // console.log(userId)
+
+  Transaction.findAll({
+    where: { userId },
+    include: [
+      { model: Users },
+      { model: Facility },
+      { model: TransactionDocument },
+      { model: TransactionPhoto }
+    ]
+  }).then(transaction => {
+    if (!transaction) {
+      return res.status(404).json({ msg: `Tidak ditemukan data transaksi`, payload: null })
+    }
+    return res.status(200).json({ msg: `Berhasil mendapatkan data transaksi`, payload: transaction })
+  }).catch(err => {
+    console.log(err)
+    res.status(400).json({ msg: `Gagal mendapatkan data transaksi`, payload: err })
+  })
+}
+
 export {
   getAllTransaction,
-  getTransactionById
+  getTransactionById,
+  getUserTransaction
 }

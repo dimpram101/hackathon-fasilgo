@@ -1,4 +1,4 @@
-import { Facility, FacilityPhoto, Transaction } from "../models/Association.js";
+import { Facility, FacilityPhoto, Transaction, Users } from "../models/Association.js";
 
 const getAllFacilitiesWithPhoto = (req, res) => {
   Facility.findAll({
@@ -15,7 +15,12 @@ const getAllFacilitiesWithPhoto = (req, res) => {
 }
 
 const getAllFacilitiesOnly = (req, res) => {
-  Facility.findAll()
+  Facility.findAll({
+    include: {
+      model: Users,
+      attributes: ["id", "fullname"]
+    }
+  })
     .then(facility => {
       if (!facility) return res.status(404).json({ msg: "Tidak ada data fasilitas!" })
       return res.status(200).json({ msg: "Data ditemukan!", payload: facility })
@@ -27,13 +32,16 @@ const getAllFacilitiesOnly = (req, res) => {
 }
 
 const getFacilityWithId = (req, res) => {
-  const { facilityId } = req.body;
+  const facilityId = req.params.id;
 
   Facility.findOne({
     where: {
       id: facilityId
     },
-    include: [FacilityPhoto, Transaction]
+    include: [
+      { model: FacilityPhoto },
+      { model: Users, attributes: ["id", "fullname"] }
+    ]
   }).then(facility => {
     if (!facility) return res.status(404).json({ msg: `Tidak ada data fasilitas dengan id: ${facilityId}!` })
     return res.status(200).json({ msg: "Data ditemukan!", payload: facility })

@@ -39,7 +39,6 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-
   try {
     const user = await Users.findOne({
       where: {
@@ -47,10 +46,11 @@ const login = async (req, res) => {
       }
     });
 
-    if (!user) return res.status(404).json({ msg: "Email atau Password salah!" })
+    console.log(user)
 
-    const passwordMatch = bcrypt.compare(req.body.password, password);
-    if (!passwordMatch) return res.status(404).json({ msg: "Email atau Password salah!" })
+    if (!user) return res.status(401).json({ msg: "Email atau Password salah!" })
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) return res.status(401).json({ msg: "Email atau Password salah!" })
 
     const accessToken = jwt.sign({
       userId: user.id,
@@ -76,4 +76,22 @@ const logout = (req, res) => {
 })
 }
 
-export { register, login, logout };
+const getDecodedToken = (req, res) => {
+  const { token } = req.body;
+  // console.log(token);
+  jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, decoded) => {
+    if (err) return res.status(403).json({ payload: err });
+    const userId = decoded.userId;
+    const fullname = decoded.fullname;
+    
+    return res.status(200).json({
+      msg: "Authorized",
+      payload: {
+        userId,
+        fullname
+      }
+    })
+  })
+}
+
+export { register, login, logout, getDecodedToken };
