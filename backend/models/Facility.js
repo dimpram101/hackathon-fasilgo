@@ -14,6 +14,10 @@ const Facility = db.define('facilities', {
     type: DataTypes.STRING,
     allowNull: false
   }, 
+  hargaSewa: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   rekening: {
     type: DataTypes.STRING,
     allowNull: false

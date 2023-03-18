@@ -2,7 +2,9 @@ import jwt from "jsonwebtoken";
 
 const verifyToken = (req, res, next) => {
   const header = req.headers["authorization"];
-  const token = header.split(' ')[0];
+  const token = header.split(' ')[1];
+
+  console.log(token);
 
   if (!token) return res.status(401).json({ msg: "Tidak terautentikasi" })
   jwt.verify(token, process.env.ACCESS_SECRET_KEY, (err, decoded) => {

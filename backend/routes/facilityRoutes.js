@@ -3,6 +3,7 @@ import { getAllFacilitiesOnly, getAllFacilitiesWithPhoto, getFacilityWithId } fr
 const facilityRoutes = Router();
 
 facilityRoutes.get('/', getAllFacilitiesOnly)
+facilityRoutes.get('/get-with-photo', getAllFacilitiesWithPhoto)
 facilityRoutes.get('/:id', getFacilityWithId)
 
 export default facilityRoutes;

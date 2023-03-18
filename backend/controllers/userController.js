@@ -1,5 +1,5 @@
 import { editUserSchema, transactionSchema } from "../utils/joyVerification.js";
-import { User, KTPUser, Transaction, TransactionPhoto, Review } from "../models/Association.js";
+import { Users, KTPUser, Transaction, TransactionPhoto, Review } from "../models/Association.js";
 
 export const  inputKTP = async (req, res) => {
   const userId = res.locals.userId;
@@ -17,15 +17,14 @@ export const  inputKTP = async (req, res) => {
 
 export const editAccount = async (req, res) => {
   const userId = res.locals.userId;
-  const { fullname, email, nomorHP } = req.body;
+  const { fullname, nomorHP } = req.body;
 
   const validatedData = await editUserSchema.validateAsync({
     fullname,
-    nomorHP,
-    email
+    nomorHP
   }).catch(err => res.status(400).json({ msg: err.details[0].message }));
 
-  User.update(validatedData, {
+  Users.update(validatedData, {
     where: {
       id: userId
     }

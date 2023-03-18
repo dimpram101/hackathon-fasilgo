@@ -31,6 +31,5 @@ const getTransactionById = async (req, res) => {
 
 export {
   getAllTransaction,
-  getAllOnlyTransactionExcel,
   getTransactionById
 }
