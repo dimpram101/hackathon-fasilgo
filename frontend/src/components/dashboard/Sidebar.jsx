@@ -10,7 +10,7 @@ const Sidebar = () => {
     console.log(open);
 
     return (
-        <div className="flex flex-col p-2 w-80 bg-[#88C3FF] h-screen">
+        <div className="flex flex-col p-2 w-80 fixed bg-[#88C3FF] h-screen">
             <div className="mx-auto mt-3">
                 <Link to={"/dashboard"}>
                     <div className="flex flex-row gap-3 items-center mt-6 ">
@@ -79,7 +79,7 @@ const Sidebar = () => {
             <div className="px-4 mb-3">
                 <Link to={"/dashboard/fasilitas"}>
                     <p className="bg-[#88C3FF]  rounded-xl p-3 hover:bg-blue-200">
-                        Fasilitas
+                        Lihat Fasilitas
                     </p>
                 </Link>
             </div>
