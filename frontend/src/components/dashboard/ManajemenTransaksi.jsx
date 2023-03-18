@@ -14,7 +14,7 @@ const ManajemenTransaksi = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setTransaksi(res.data.payload);
       })
       .catch((err) => console.log(err));

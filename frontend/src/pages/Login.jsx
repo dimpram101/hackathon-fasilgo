@@ -23,7 +23,7 @@ const Login = () => {
         navigate(0);
       })
       .catch(({ response }) => {
-        console.log(response);
+        // console.log(response);
         setError(response.data.msg);
         setTimeout(() => setError(""), 3000)
       });

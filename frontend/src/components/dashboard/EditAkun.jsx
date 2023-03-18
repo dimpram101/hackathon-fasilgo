@@ -8,7 +8,7 @@ const EditAkun = () => {
   // console.log(auth)
   useEffect(() => {
     if (auth) {
-      console.log(auth)
+      // console.log(auth)
       api.request({
         method: "GET",
         url: "/user/"+auth.userId,
@@ -64,7 +64,7 @@ const EditAkun = () => {
               
               <input
                 type="file"
-                className="border rounded-lg border-1 w-3/4 rounded-lg p-2"
+                className="border border-1 w-3/4 rounded-lg p-2"
               />
               <button className="bg-sky-400 hover:bg-sky-500 border border-1 w-1/4 p-2 rounded-lg hover">
                 Simpan

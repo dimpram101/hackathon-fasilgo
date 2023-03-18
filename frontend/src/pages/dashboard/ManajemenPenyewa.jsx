@@ -27,7 +27,7 @@ const ManajemenPenyewa = () => {
       })
       .then((res) => {
         setUsers(res.data.payload);
-        console.log(users);
+        // console.log(users);
       });
   }, [refresh]);
 
