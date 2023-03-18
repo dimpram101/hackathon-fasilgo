@@ -31,24 +31,49 @@ const getAllFacilitiesOnly = (req, res) => {
     })
 }
 
-const getFacilityWithId = (req, res) => {
+const getFacilityWithId = async (req, res) => {
   const facilityId = req.params.id;
 
-  Facility.findOne({
-    where: {
-      id: facilityId
-    },
-    include: [
-      { model: FacilityPhoto },
-      { model: Users, attributes: ["id", "fullname"] }
-    ]
-  }).then(facility => {
-    if (!facility) return res.status(404).json({ msg: `Tidak ada data fasilitas dengan id: ${facilityId}!` })
-    return res.status(200).json({ msg: "Data ditemukan!", payload: facility })
-  }).catch(err => {
-    console.log(err);
+  try {
+    const facility = await Facility.findOne({
+      where: {
+        id: facilityId
+      },
+      include: [
+        { model: FacilityPhoto },
+        { model: Users, attributes: ["id", "fullname"] }
+      ]
+    })
+
+    const transaction = await Transaction.findAll({
+      where: {
+        facilityId,
+        status: "Disetujui"
+      }
+    })
+
+    return res.status(200).json({ msg: "Data ditemukan!", payload: { facility, transaction } })
+  } catch (error) {
     return res.status(400).json({ msg: "Terjadi masalah!", payload: err })
-  })
+  }
+
+
+  // Facility.findOne({
+  //   where: {
+  //     id: facilityId
+  //   },
+  //   include: [
+  //     { model: FacilityPhoto },
+  //     { model: Users, attributes: ["id", "fullname"] },
+  //     { model: Transaction }
+  //   ]
+  // }).then(facility => {
+  //   if (!facility) return res.status(404).json({ msg: `Tidak ada data fasilitas dengan id: ${facilityId}!` })
+  //   return res.status(200).json({ msg: "Data ditemukan!", payload: facility })
+  // }).catch(err => {
+  //   console.log(err);
+  //   return res.status(400).json({ msg: "Terjadi masalah!", payload: err })
+
 }
 
 export { getAllFacilitiesOnly, getFacilityWithId, getAllFacilitiesWithPhoto };

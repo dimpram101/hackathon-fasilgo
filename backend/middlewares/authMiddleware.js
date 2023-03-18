@@ -36,7 +36,6 @@ const isUserAdmin = (req, res, next) => {
       id: userId
     }
   }).then((user) => {
-    console.log(user)
     if (user.isAdmin) {
       return next()
     }
