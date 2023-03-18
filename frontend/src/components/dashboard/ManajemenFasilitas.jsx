@@ -43,7 +43,7 @@ const ManajemenFasilitas = () => {
   }, [refresh]);
 
   return (
-    <div className="py-4 px-4 w-full">
+    <div className="py-4 px-4 overflow-x-hidden ml-80 w-[100vh-320px]">
       <Link
         to={"/dashboard/manajemen-fasilitas/tambah-fasilitas"}
         className="bg-green-500 rounded-t-lg pt-2 pb-2 pl-2 pr-2 ml-4 mr-4"

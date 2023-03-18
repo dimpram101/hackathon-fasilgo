@@ -20,7 +20,7 @@ const ManajemenPengelola = () => {
   }, []);
 
   return (
-    <div className="mt-8 w-11/12 mx-auto">
+    <div className="mt-8 ml-80 w-[100vh-320px]">
       <button onClick={() => setOpen(!open)}className="bg-green-400 text-white font-bold rounded-t-lg pt-2 pb-2 pl-2 pr-2 ml-4 mr-4">
         Tambah Akun Pengelola +
       </button>
