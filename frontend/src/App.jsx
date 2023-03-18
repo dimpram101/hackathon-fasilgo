@@ -1,4 +1,6 @@
-import "./App.css";
+import { useState } from 'react'
+import './App.css'
+import Home from './pages/Home';
 import Dashboard from "./pages/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
@@ -9,6 +11,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
