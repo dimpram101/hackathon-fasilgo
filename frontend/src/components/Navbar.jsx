@@ -3,13 +3,19 @@ import { useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { auth } = useContext(AuthContext);
   // console.log(auth)
   const [showMenu, setShowMenu] = useState(false);
   const handleClick = () => {
     setShowMenu(!showMenu);
   };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setAuth(null);
+  }
+
   return (
     <>
       <nav className="bg-[#88C3FF] h-[95px] bg-opacity-80 px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -77,16 +83,17 @@ const Navbar = () => {
                   <div id="dropdownAvatar" class="fixed mt-16 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                       <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
                         <li>
-                          <Link to={"/dashboard"} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                          <Link to={"/dashboard/fasilitas"} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                             Dashboard</Link>
                         </li>
                         <li>
-                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Akun</a>
+                        <Link to={"/dashboard/edit-akun"} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Edit Akun</Link>
                         </li>
                         <li>
-                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log Out</a>
+                          <a onClick={logout} class="block px-4 py-2 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-600 dark:hover:text-white">Log Out</a>
                         </li>
-                      </ul>s
+                      </ul>
                   </div>
                 )}
 
@@ -124,12 +131,12 @@ const Navbar = () => {
           >
             <ul className="flex flex-col p-4 mt-4  md:invisible lg:visible  rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to={"/dashboard/fasilitas"}
                   className="block font-roboto text-lg py-2 pl-3 pr-4 text-gray-700 rounded hover:text-black hover:bg-gray-100 md:hover:bg-transparent  md:p-0 "
                 >
-                  Sewa Fasilitas
-                </a>
+                  Sewa Fasilitas </Link>
+  
               </li>
               <li>
                 <a
