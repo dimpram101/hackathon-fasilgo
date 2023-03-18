@@ -92,3 +92,19 @@ export const insertFacilityReview = (req, res) => {
   }).then(result => res.status(201).json({ msg: "Berhasil menambahkan ulasan!" }))
     .catch(err => res.status(400).json({ msg: "Gagal menambahkan ulasan", payload: err }))
 }
+
+export const getByFullname = (req, res) => {
+  const { fullname } = req.body;
+
+  Users.findOne({
+    where: {
+      fullname
+    },
+    attributes: ["id"]
+  }).then(user => {
+    return res.status(200).json({ msg: "User ditemukan", payload: user })
+  }).catch(err => {
+    console.log(err);
+    return res.status(400).json({ msg: "ERROR", payload: err })
+  })
+}

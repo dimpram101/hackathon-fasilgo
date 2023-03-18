@@ -3,7 +3,7 @@ import { useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { auth } = useContext(AuthContext);
   // console.log(auth)
   const [showMenu, setShowMenu] = useState(false);

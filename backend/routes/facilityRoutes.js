@@ -6,4 +6,5 @@ facilityRoutes.get('/', getAllFacilitiesOnly)
 facilityRoutes.get('/get-with-photo', getAllFacilitiesWithPhoto)
 facilityRoutes.get('/:id', getFacilityWithId)
 
+
 export default facilityRoutes;

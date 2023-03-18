@@ -16,7 +16,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-row">
       <Sidebar />
-      <div className="flex flex-col mx-auto w-full p-10 bg-[#f0f0f0]">
+      <div className="flex flex-col mx-auto w-full p-10 h-[1300px] bg-[#f0f0f0]">
         <Routes>
           <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />} />
           <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<AddFacility/>} />
@@ -27,7 +27,7 @@ const Dashboard = () => {
           <Route path="/manajemen-akun/penyewa" element={<ManajemenPenyewa />}/>
           <Route path="/riwayat-transaksi" element={<RiwayatTransaksi />}/>
           <Route path="/fasilitas/" element={<FacilityCard />} />
-          <Route path="/fasilitas/detail-fasilitas" element={<DetailFacility />} />
+          <Route path="/fasilitas/detail-fasilitas/:id" element={<DetailFacility />} />
           <Route path="/edit-akun" element={<EditAkun />}/> 
           <Route path="/logout" /> 
         </Routes>

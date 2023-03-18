@@ -1,15 +1,17 @@
 import { Router } from "express";
+import facilityStorage from "../utils/storage/facilityStorage.js";
 import {
   addFacilityPhoto,
   deleteFacility,
   deleteFacilityPhoto,
   editFacility,
-  insertNewFacility, 
+  insertNewFacility,
   createAkunPengelola,
   updateTransaction,
   getAkunPengelola,
   getAkunPenyewa,
-  deleteAkun, 
+  deleteAkun,
+  insertNewFacilityPhoto,
 } from "../controllers/adminController.js";
 
 const adminRoutes = Router();
@@ -19,7 +21,8 @@ adminRoutes.get('/get-akun-pengelola', getAkunPengelola)
 adminRoutes.get('/get-akun-penyewa', getAkunPenyewa)
 adminRoutes.delete('/delete-akun/:id', deleteAkun)
 
-adminRoutes.post('/create-new-facility', insertNewFacility)
+adminRoutes.post('/create-new-facility', [facilityStorage.single('file')], insertNewFacility)
+// adminRoutes.post('/create-new-facility-photo', [facilityStorage.single('file')], insertNewFacilityPhoto)
 adminRoutes.put('/facility/:id', editFacility)
 adminRoutes.delete('/facility/:id', deleteFacility)
 

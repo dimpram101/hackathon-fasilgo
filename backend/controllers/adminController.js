@@ -7,24 +7,29 @@ import UserKTP from "../models/KTPUser.js";
 // Facility
 /////////////////
 const insertNewFacility = async (req, res) => {
-  const { namaFasilitas, alamat, deskripsi, hargaSewa, rekening, koordinatX, koordinatY, pengelolaId, facilityPhoto } = req.body;
+  const { namaFasilitas, alamat, deskripsi, hargaSewa, rekening, pengelolaId } = req.body;
+  const file = req.file;
+  const filename = file.originalname.split('.')[0];
   try {
     const f = await Facility.create({
-      namaFasilitas, alamat, deskripsi, hargaSewa, rekening, koordinatX, koordinatY, pengelolaId,
+      namaFasilitas, alamat, deskripsi, hargaSewa, rekening, pengelolaId,
     });
-    if (facilityPhoto) {
-      facilityPhoto.forEach(async (photo) => {
-        await FacilityPhoto.create({
-          ...photo,
-          facilityId: f.id
-        });
-      })
+
+    if (file) {
+      // facilityPhoto.forEach(async (photo) => {
+      await FacilityPhoto.create({
+        photoTitle: filename,
+        path: file.path,
+        facilityId: f.id
+      });
+      // })
     }
 
     return res.status(201).json({
       msg: "Fasilitas berhasil dibuat!",
     });
   } catch (error) {
+    console.log(error)
     return res.status(400).json({
       msg: "Fasilitas gagal dibuat!",
       payload: error
@@ -32,12 +37,28 @@ const insertNewFacility = async (req, res) => {
   }
 }
 
+const insertNewFacilityPhoto = async (req, res) => {
+  const file = req.file;
+  console.log(file);
+  const filename = file.originalname.split('.')[0];
+  if (file) {
+    // facilityPhoto.forEach(async (photo) => {
+    await FacilityPhoto.create({
+      photoTitle: filename,
+      path: file.path,
+      facilityId: f.id
+    });
+    // })
+  }
+  return res.status(201).json({ msg: "Berhasil menambahkan photo!" });
+}
+
 const editFacility = async (req, res) => {
   const { id } = req.params;
-  const { namaFacility, alamat, deskripsi, rekening, koordinatX, koordinatY, pengelolaId } = req.body
+  const { namaFacility, alamat, deskripsi, rekening, pengelolaId } = req.body
 
   try {
-    await Facility.update({ namaFacility, alamat, deskripsi, rekening, koordinatX, koordinatY, pengelolaId }, {
+    await Facility.update({ namaFacility, alamat, deskripsi, rekening, pengelolaId }, {
       where: { id }
     });
 
@@ -159,7 +180,7 @@ const getAkunPengelola = (req, res) => {
 const updateTransaction = async (req, res) => {
   const { id } = req.params;
   const { status, catatan } = req.body;
-
+  // console.log(status,catatan)
   // Transaction.update({ status }, { where: { id } })
   //   .then(result => res.status(200).json({ msg: "Transaksi berhasil diperbaharui!", payload: result }))
   //   .catch(err => res.status(400).json({ msg: "Transaksi gagal diperbaharui!", payload: err }));
@@ -171,6 +192,7 @@ const updateTransaction = async (req, res) => {
 
     if (!transaction) return res.status(404).json({ msg: "Tidak ditemukan data transaksi!" })
     transaction = await transaction.update({ status, catatan });
+    // console.log(transaction)
 
     // await mailTransporter.sendMail({
     //   from: 'dimpram10@gmail.com',
@@ -220,6 +242,7 @@ const deleteAkun = (req, res) => {
 
 export {
   insertNewFacility,
+  insertNewFacilityPhoto,
   editFacility,
   deleteFacility,
   addFacilityPhoto,
