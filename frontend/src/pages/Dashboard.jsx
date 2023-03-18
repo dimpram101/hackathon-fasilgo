@@ -10,6 +10,7 @@ import ManajemenPengelola from "./dashboard/ManajemenPengelola";
 import RiwayatTransaksi from "../components/dashboard/RiwayatTransaksi";
 import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
 import DetailFacility from "./dashboard/DetailFacility";
+import EditTransaksi from "../components/dashboard/manajemen-transaksi/EditTransaksi";
 
 const Dashboard = () => {
   return (
@@ -21,7 +22,7 @@ const Dashboard = () => {
           <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<AddFacility/>} />
           <Route path="/manajemen-fasilitas/edit/:id" element={<EditFasilitas />}/>
           <Route path="/manajemen-transaksi" element={<ManajemenTransaksi />}/>
-          <Route path="/manajemen-transaksi/:id" element={<ManajemenTransaksi />}/>
+          <Route path="/manajemen-transaksi/edit" element={<EditTransaksi />}/>
           <Route path="/manajemen-akun/pengelola" element={<ManajemenPengelola />}/>
           <Route path="/manajemen-akun/penyewa" element={<ManajemenPenyewa />}/>
           <Route path="/riwayat-transaksi" element={<RiwayatTransaksi />}/>
