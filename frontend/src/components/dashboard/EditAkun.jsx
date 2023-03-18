@@ -31,11 +31,12 @@ const EditAkun = () => {
         <div className="flex flex-col gap-2 w-11/12">
           <div className="flex flex-col gap-2">
             <label className="text-2xl">KTP</label>
-            <img className="object-fit w-full h-full" src={Image} />
+            <img className="object-fit w-full h-full rounded-lg" src={Image} />
             <div className="flex flex-row justify-start gap-4">
+              
               <input
                 type="file"
-                className="border border-1 w-3/4 rounded-lg p-2"
+                className="border rounded-lg border-1 w-3/4 rounded-lg p-2"
               />
               <button className="bg-sky-400 hover:bg-sky-500 border border-1 w-1/4 p-2 rounded-lg hover">
                 Simpan
