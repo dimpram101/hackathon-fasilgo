@@ -1,5 +1,5 @@
 import { userRegistrationSchema } from "../utils/joyVerification.js";
-import { User, Facility, FacilityPhoto, Transaction } from "../models/Association.js";
+import { Users, Facility, FacilityPhoto, Transaction } from "../models/Association.js";
 import bcrypt from "bcrypt";
 
 /////////////////

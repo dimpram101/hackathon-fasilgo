@@ -1,4 +1,4 @@
-import { Facility, FacilityPhoto, Transaction } from "../models/Association";
+import { Facility, FacilityPhoto, Transaction } from "../models/Association.js";
 
 const getAllFacilitiesWithPhoto = (req, res) => {
   Facility.findAll({
@@ -43,4 +43,4 @@ const getFacilityWithId = (req, res) => {
   })
 }
 
-export { getAllFacilitiesOnly, getFacilityWithId, getAllFacilitiesOnly }
+export { getAllFacilitiesOnly, getFacilityWithId, getAllFacilitiesWithPhoto };
