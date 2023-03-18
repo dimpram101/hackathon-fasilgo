@@ -2,13 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
 import ManajemenFasilitas from "../components/dashboard/ManajemenFasilitas";
 import EditAkun from "../components/dashboard/EditAkun";
-<<<<<<< HEAD
 import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
-=======
-import ManajemenTransaksi from "../components/dashboard/ManajemenTransaksi";
-import ManajemenPenyewa from "./dashboard/ManajemenPenyewa";
-import ManajemenPengelola from "./dashboard/ManajemenPengelola";
->>>>>>> 62682c231e752bdf4e4ba5d9d2b39ccec4e0c444
 
 const Dashboard = () => {
   return (
