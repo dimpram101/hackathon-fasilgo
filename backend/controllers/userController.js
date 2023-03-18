@@ -5,7 +5,6 @@ export const  inputKTP = async (req, res) => {
   const userId = res.locals.userId;
   const file = req.file;
   const fileName = file.originalname.split('.')[0];
-  console.log(file)
   KTPUser.create({
     userId,
     imageName: fileName,

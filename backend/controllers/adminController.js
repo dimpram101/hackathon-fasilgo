@@ -6,9 +6,11 @@ import bcrypt from "bcrypt";
 // Facility
 /////////////////
 const insertNewFacility = async (req, res) => {
-  const { facility, facilityPhoto } = req.body;
+  const { namaFasilitas, alamat, deskripsi, hargaSewa, rekening, koordinatX, koordinatY, pengelolaId, facilityPhoto } = req.body;
   try {
-    const f = await Facility.create(facility);
+    const f = await Facility.create({
+      namaFasilitas, alamat, deskripsi, hargaSewa, rekening, koordinatX, koordinatY, pengelolaId,
+    });
     if (facilityPhoto) {
       facilityPhoto.forEach(async (photo) => {
         await FacilityPhoto.create({

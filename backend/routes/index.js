@@ -11,7 +11,7 @@ const indexRoute = Router();
 
 indexRoute.use(authRoute);
 indexRoute.use('/user', [verifyToken], userRoutes);
-indexRoute.use('/admin', [verifyToken, isUserAdmin], adminRoutes);
+indexRoute.use('/admin', [verifyToken, isUserAdmin, adminRoutes]);
 indexRoute.use('/transactions', transactionRoutes);
 indexRoute.use('/facilities', facilityRoutes);
 

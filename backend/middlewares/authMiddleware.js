@@ -36,8 +36,9 @@ const isUserAdmin = (req, res, next) => {
       id: userId
     }
   }).then((user) => {
+    console.log(user.isAdmin)
     if (user.isAdmin) {
-      next()
+      return next()
     }
 
     return res.status(403).json({

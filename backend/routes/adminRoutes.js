@@ -14,7 +14,7 @@ const adminRoutes = Router();
 
 adminRoutes.post('/create-akun-pengelola', createAkunPengelola)
 
-adminRoutes.post('/create-new-facility', [facilityStorage.array('files')], insertNewFacility)
+adminRoutes.post('/create-new-facility', insertNewFacility)
 adminRoutes.put('/facility/:id', editFacility)
 adminRoutes.delete('/facility/:id', deleteFacility)
 
