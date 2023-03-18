@@ -2,11 +2,11 @@ import { Link, useMatch } from "react-router-dom";
 
 const Sidebar = (props) => {
   return (
-    <div className="flex flex-col p-2 w-80 bg-sky-200 bg-sky-200 h-screen">
+    <div className="flex flex-col p-2 w-80 bg-sky-200 h-screen">
       <div className="mx-auto mt-3">
         <Link to={"/dashboard"}>
           <div className="flex flex-row gap-3 items-center ">
-            <img src={'fasilgo.png'} 
+            <img src={'/fasilgo.png'} 
             alt='fasilgo.png' 
             class="h-10"/>
             <h2 className="text-2xl font-semibold">FasilGo</h2>
