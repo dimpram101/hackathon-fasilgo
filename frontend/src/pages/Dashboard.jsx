@@ -2,6 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
 import ManajemenFasilitas from "../components/dashboard/ManajemenFasilitas";
 import EditAkun from "../components/dashboard/EditAkun";
+import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
 
 const Dashboard = () => {
   return (
@@ -10,6 +11,8 @@ const Dashboard = () => {
       <div className="flex flex-col mx-auto w-full p-2">
         <Routes>
             <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />}/>
+            <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<ManajemenFasilitas />}/>
+            <Route path="/manajemen-fasilitas/edit/:id" element={<EditFasilitas />}/>
             <Route path="/manajemen-transaksi" element={<h2>HEYOW</h2>}/>
             <Route path="/manajemen-akun" element={<h2>HEYOW</h2>}/>
             <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>

@@ -3,12 +3,7 @@ import React, { useState } from "react";
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false);
-
-    const openToggle = () => {
-        setOpen((prev) => !prev)
-    }
-    console.log(open);
-
+    
     return (
         <div className="flex flex-col p-2 w-80 bg-[#88C3FF] h-screen">
             <div className="mx-auto mt-3">
