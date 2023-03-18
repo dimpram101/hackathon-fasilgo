@@ -4,7 +4,7 @@ import GuideRen from "../components/GuideRen";
 import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       <div className="bg-[#F0F0F0] h-full">
