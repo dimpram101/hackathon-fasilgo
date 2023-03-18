@@ -2,7 +2,7 @@ import Image from "../../assets/KTP_DimasPramudya.jpeg";
 
 const EditAkun = () => {
   return (
-    <div className="flex flex-col p-4 items-center">
+    <div className="flex flex-col p-4 items-center bg-white rounded-lg shadow-xl">
       <h2 className="text-3xl font-bold mt=2">Edit Akun</h2>
       <div className="w-11/12 mt-10 flex flex-row gap-10">
         <form className="w-full">
