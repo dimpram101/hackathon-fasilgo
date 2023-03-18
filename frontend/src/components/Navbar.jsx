@@ -1,10 +1,15 @@
 import { useContext } from "react";
+import { useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   const { auth } = useContext(AuthContext);
   // console.log(auth)
+  const [showMenu, setShowMenu] = useState(false);
+  const handleClick = () => {
+    setShowMenu(!showMenu);
+  };
   return (
     <>
       <nav className="bg-[#88C3FF] h-[95px] bg-opacity-80 px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -44,22 +49,47 @@ const Navbar = (props) => {
                 </>
               ) : (
                 <>
-                  <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                    <svg
-                      class="absolute w-12 h-12 text-gray-400 -left-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      ></path>
-                    </svg>
+                  {/* <div className="dropdown relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                    <button onClick={handleClick} className="dropdown__button">
+                    </button>
                   </div>
                   <div className="pl-6 pt-[8px] font-roboto ">
                     <p className="">{auth.fullname}</p>
                   </div>
+                  {showMenu && (
+                    <ul className="dropdown__menu fixed bg-white top-24 z-10">
+                      <li className="dropdown__item">Item 1</li>
+                      <li className="dropdown__item">Item 2</li>
+                      <li className="dropdown__item">Item 3</li>
+                    </ul>
+                  )} */}
+                  
+                <button onClick={handleClick} id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" type="button">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="w-8 h-8 rounded-full" src="./assets/orang.jpg" alt=""/>
+                </button>
+
+                <div className="pl-6 pt-[6px] font-roboto ">
+                    <p className="">{auth.fullname}</p>
+                </div>
+                
+                {showMenu && (
+                  <div id="dropdownAvatar" class="fixed mt-16 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+                        <li>
+                          <Link to={"/dashboard"} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            Dashboard</Link>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Akun</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log Out</a>
+                        </li>
+                      </ul>
+                  </div>
+                )}
+
                 </>
               )}
 
