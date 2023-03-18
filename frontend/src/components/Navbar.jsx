@@ -4,12 +4,18 @@ import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   // console.log(auth)
   const [showMenu, setShowMenu] = useState(false);
   const handleClick = () => {
     setShowMenu(!showMenu);
   };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setAuth(null);
+  }
+
   return (
     <>
       <nav className="bg-[#88C3FF] h-[95px] bg-opacity-80 px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -84,7 +90,7 @@ const Navbar = (props) => {
                           <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Akun</a>
                         </li>
                         <li>
-                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log Out</a>
+                          <a onClick={logout} class="block px-4 py-2 hover:bg-gray-100 cursor-pointer dark:hover:bg-gray-600 dark:hover:text-white">Log Out</a>
                         </li>
                       </ul>
                   </div>
