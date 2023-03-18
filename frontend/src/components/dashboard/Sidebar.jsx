@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const Sidebar = () => {
     const [open, setOpen] = useState(false);
+    const [isFasil, setIsFasil] = useState(false);
 
     const openToggle = () => {
         setOpen((prev) => !prev)
@@ -10,9 +11,9 @@ const Sidebar = () => {
     console.log(open);
 
     return (
-        <div className="flex flex-col p-2 w-80 fixed bg-[#88C3FF] h-screen">
+        <div className={`flex flex-col p-2 w-80 ${isFasil ? "fixed" : ""} bg-[#88C3FF] h-screen`}>
             <div className="mx-auto mt-3">
-                <Link to={"/dashboard"}>
+                <Link to={"/dashboard"} onClick={() => setIsFasil(false)}>
                     <div className="flex flex-row gap-3 items-center mt-6 ">
                         <img src={'/fasilgo.png'}
                             alt='fasilgo.png'
@@ -26,14 +27,14 @@ const Sidebar = () => {
                 <div className="flex-grow border-t border-white"></div>
             </div>
             <div className="px-4 mb-3">
-                <Link to={"/dashboard/manajemen-fasilitas"}>
+                <Link to={"/dashboard/manajemen-fasilitas"} onClick={() => setIsFasil(false)}>
                     <p className="bg-[#88C3FF] rounded-xl p-3  hover:bg-blue-200">
                         Manajemen Fasilitas
                     </p>
                 </Link>
             </div>
             <div className="px-4 mb-3">
-                <Link to={"/dashboard/manajemen-transaksi"}>
+                <Link to={"/dashboard/manajemen-transaksi"} onClick={() => setIsFasil(false)}>
                     <p className="bg-[#88C3FF]  rounded-xl p-3 hover:bg-blue-200">
                         Manajemen Transaksi
                     </p>
@@ -52,12 +53,12 @@ const Sidebar = () => {
 
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                < Link to={"/dashboard/manajemen-akun/akun-penyewa"}>
+                                < Link to={"/dashboard/manajemen-akun/penyewa"}>
                                     <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Penyewa</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/dashboard/manajemen-akun/akun-pengelola"}>
+                                <Link to={"/dashboard/manajemen-akun/pengelola"}>
                                     <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Pengelola</a>
                                 </Link>
                             </li>
@@ -67,28 +68,28 @@ const Sidebar = () => {
                 )}
             </div>
             <div className="px-4 mb-3">
-                <Link to={"/dashboard/riwayat-transaksi"}>
+                <Link to={"/dashboard/riwayat-transaksi"} onClick={() => setIsFasil(false)}>
                     <p className="bg-[#88C3FF]  rounded-xl p-3  hover:bg-blue-200">
                         Riwayat Transaksi
                     </p>
                 </Link>
             </div>
             <div className="px-4 mb-3">
-                <Link to={"/dashboard/edit-akun"}>
+                <Link to={"/dashboard/edit-akun"} onClick={() => setIsFasil(false)}>
                     <p className="bg-[#88C3FF]  rounded-xl p-3 hover:bg-blue-200">
                         Edit Akun
                     </p>
                 </Link>
             </div>
             <div className="px-4 mb-3">
-                <Link to={"/dashboard/fasilitas"}>
+                <Link to={"/dashboard/fasilitas"} onClick={() => setIsFasil(true)}>
                     <p className="bg-[#88C3FF]  rounded-xl p-3 hover:bg-blue-200">
                         Lihat Fasilitas
                     </p>
                 </Link>
             </div>
             <div className="px-4 mb-3 mt-auto">
-                <Link to={"/dashboard/logout"}>
+                <Link to={"/dashboard/logout"} onClick={() => setIsFasil(false)}>
                     <p className="bg-[#88C3FF]  text-xl text-semibold rounded-xl p-3 hover:bg-blue-200">
                         LOG OUT
                     </p>

@@ -9,6 +9,7 @@ import ManajemenPenyewa from "./dashboard/ManajemenPenyewa";
 import ManajemenPengelola from "./dashboard/ManajemenPengelola";
 import RiwayatTransaksi from "../components/dashboard/RiwayatTransaksi";
 import EditFasilitas from "../components/dashboard/manajemen-fasilitas/EditFasilitas";
+import DetailFacility from "./dashboard/DetailFacility";
 
 const Dashboard = () => {
   return (
@@ -27,9 +28,10 @@ const Dashboard = () => {
           <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>
           <Route path="/riwayat-transaksi" element={<RiwayatTransaksi />}/>
           <Route path="/sewa-fasilitas" element={<h2>HEYOW</h2>}/>
-          <Route path="/fasilitas" element={<FacilityCard />} />
+          <Route path="/fasilitas/" element={<FacilityCard />} />
+          <Route path="/fasilitas/detail-fasilitas" element={<DetailFacility />} />
           <Route path="/edit-akun" element={<EditAkun />}/> 
-          <Route path="/logout" />
+          <Route path="/logout" /> 
         </Routes>
       </div>
     </div>
