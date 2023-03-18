@@ -108,7 +108,10 @@ const ManajemenPengelola = () => {
                   <td className="px-6 py-4 text-center">
                     {user.user_ktp ? (
                       <a
-                        href="#"
+                        href={`http://localhost:5000/${
+                          user.user_ktp.path.split("public")[1]
+                        }`}
+                        target="_blank"
                         className="font-medium text-blue-600 hover:underline"
                       >
                         Foto
