@@ -13,6 +13,7 @@ const Dashboard = () => {
         <Routes>
             <Route path="/manajemen-fasilitas" element={<ManajemenFasilitas />}/>
             <Route path="/manajemen-fasilitas/tambah-fasilitas" element={<AddFacility />}/>
+            
             <Route path="/manajemen-transaksi" element={<h2>HEYOW</h2>}/>
             <Route path="/manajemen-akun" element={<h2>HEYOW</h2>}/>
             <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>

@@ -52,10 +52,14 @@ const Sidebar = () => {
                        
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Penyewa</a>
+                                < Link to={"/dashboard/manajemen-akun/akun-penyewa"}>
+                                    <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Penyewa</a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Pengelola</a>
+                                <Link to={"/dashboard/manajemen-akun/akun-pengelola"}>
+                                    <a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded-md text-md dark:hover:bg-gray-600 dark:hover:text-white">Akun Pengelola</a>
+                                </Link>
                             </li>
 
                         </ul>
