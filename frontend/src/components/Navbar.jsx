@@ -3,7 +3,7 @@ import { useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-const Navbar = (props) => {
+const Navbar = () => {
   const { auth } = useContext(AuthContext);
   // console.log(auth)
   const [showMenu, setShowMenu] = useState(false);
@@ -86,7 +86,7 @@ const Navbar = (props) => {
                         <li>
                           <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Log Out</a>
                         </li>
-                      </ul>
+                      </ul>s
                   </div>
                 )}
 
