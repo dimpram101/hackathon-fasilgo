@@ -1,6 +1,7 @@
 import { userRegistrationSchema } from "../utils/joyVerification.js";
 import { Users, Facility, FacilityPhoto, Transaction } from "../models/Association.js";
 import bcrypt from "bcrypt";
+import UserKTP from "../models/KTPUser.js";
 
 /////////////////
 // Facility
@@ -137,6 +138,24 @@ const deleteAkunPengelola = async (req, res) => {
     .catch(err => res.status(400).json({ msg: "Gagal menghapus akun!", err }))
 }
 
+const getAkunPengelola = (req, res) => {
+  Facility.findAll({
+    attributes: ['id'],
+    include: {
+      model: Users,
+      attributes: ['id', 'fullname', 'email', 'nomorHP'],
+      include: [UserKTP]
+    }
+  }).then((user) => {
+    if (!user) return res.status(404).json({ msg: "Belum ada user!" })
+
+    return res.status(200).json({ msg: "User ditemukan", payload: user })
+  }).catch(err => {
+    console.log(err)
+    return res.status(400).json({ msg: "Terjadi error", payload: err })
+  })
+}
+
 const updateTransaction = async (req, res) => {
   const { id } = req.params;
   const { status, catatan } = req.body;
@@ -167,7 +186,31 @@ const updateTransaction = async (req, res) => {
     console.log(err);
     return res.status(400).json({ msg: "Transaksi gagal diperbaharui!", payload: err });
   }
+}
 
+const getAkunPenyewa = (req, res) => {
+  Users.findAll({
+    include: {
+      model: Facility,
+      attributes: ["id"]
+    }
+  }).then((user) => {
+    return res.status(200).json({ msg: "Data ditemukan!", payload: user })
+  }).catch(err => res.status(400).json({ msg: "ERROR", payload: err }))
+}
+
+const deleteAkun = (req, res) => {
+  const id = req.params.id;
+
+  Users.destroy({
+    where: {
+      id
+    }
+  }).then(() => res.status(200).json({ msg: "Berhasil mengahpus akun!" }))
+    .catch(err => {
+      console.log(err)
+      return res.status(400).json({ msg: "ERROR", payload: err })
+    })
 }
 
 export {
@@ -178,5 +221,8 @@ export {
   deleteFacilityPhoto,
   createAkunPengelola,
   deleteAkunPengelola,
-  updateTransaction
+  getAkunPengelola,
+  getAkunPenyewa,
+  updateTransaction,
+  deleteAkun
 }

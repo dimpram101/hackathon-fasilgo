@@ -1,7 +1,7 @@
 import { editUserSchema, transactionSchema } from "../utils/joyVerification.js";
 import { Users, KTPUser, Transaction, TransactionPhoto, Review } from "../models/Association.js";
 
-export const  inputKTP = async (req, res) => {
+export const inputKTP = async (req, res) => {
   const userId = res.locals.userId;
   const file = req.file;
   const fileName = file.originalname.split('.')[0];
@@ -17,11 +17,13 @@ export const  inputKTP = async (req, res) => {
 export const editAccount = async (req, res) => {
   const userId = res.locals.userId;
   const { fullname, nomorHP } = req.body;
-
+  console.log(fullname, nomorHP)
   const validatedData = await editUserSchema.validateAsync({
     fullname,
     nomorHP
   }).catch(err => res.status(400).json({ msg: err.details[0].message }));
+
+  // console.log(validatedData)
 
   Users.update(validatedData, {
     where: {
@@ -29,6 +31,22 @@ export const editAccount = async (req, res) => {
     }
   }).then(() => res.status(200).json({ msg: "Akun berhasil diperbaharui!" }))
     .catch(err => res.status(400).json({ msg: "Gagal memperbaharui akun!", payload: err }))
+}
+
+export const getSelfData = (req, res) => {
+  const id = req.params.id;
+
+  Users.findOne({
+    where: {
+      id
+    },
+    include: [KTPUser]
+  }).then((user) => {
+    return res.status(200).json({ payload: user })
+  }).catch(err => {
+    console.log(err)
+    res.status(400).json({ msg: "ERROR", payload: err })
+  })
 }
 
 export const createTransaction = async (req, res) => {
