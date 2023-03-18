@@ -1,6 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import Sidebar from "../component/Sidebar";
 import ManajemenFasilitas from "../component/dashboard/ManajemenFasilitas";
+import EditAkun from "../Component/dashboard/EditAkun";
 
 const Dashboard = () => {
   return (
@@ -14,7 +15,7 @@ const Dashboard = () => {
             <Route path="/pengelolaan-fasilitas" element={<h2>HEYOW</h2>}/>
             <Route path="/riwayat-transaksi" element={<h2>HEYOW</h2>}/>
             <Route path="/fasilitas" element={<h2>HEYOW</h2>}/>
-            <Route path="/edit-akun" element={<h2>HEYOW</h2>}/>
+            <Route path="/edit-akun" element={<EditAkun />}/>
             {/* <Route path="/logout"> */}
         </Routes>
       </div>
