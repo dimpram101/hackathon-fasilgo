@@ -33,7 +33,7 @@ const ManajemenPenyewa = () => {
 
   console.log(users);
   return (
-    <div className="mt-8 w-11/12 mx-auto">
+    <div className="mt-8 ml-80 w-[100vh-320px]">
       <div className="relative overflow-x-auto bg-gray-500 shadow-md sm:rounded-lg">
         {users.length > 0 ? (
           <table className="w-full text-sm text-left text-gray-500">

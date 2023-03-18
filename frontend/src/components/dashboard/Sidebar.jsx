@@ -11,7 +11,7 @@ const Sidebar = () => {
     console.log(open);
 
     return (
-        <div className={`flex flex-col p-2 w-80 ${isFasil ? "fixed" : ""} bg-[#88C3FF] h-screen`}>
+        <div className={`flex flex-col p-2 w-80 fixed bg-[#88C3FF] h-screen`}>
             <div className="mx-auto mt-3">
                 <Link to={"/dashboard"} onClick={() => setIsFasil(false)}>
                     <div className="flex flex-row gap-3 items-center mt-6 ">

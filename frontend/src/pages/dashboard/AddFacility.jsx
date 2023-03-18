@@ -1,7 +1,7 @@
 const AddFacility = () => {
     return (
         <>
-            <div className="bg-white shadow-xl mt-6 rounded-2xl p-8 h-[800px]">
+            <div className="bg-white shadow-xl mt-6 rounded-2xl p-8 h-[800px] ml-80 w-[80%]">
                 <div className="text-3xl font-roboto font-bold">
                     <h3>Tambah Fasilitas</h3>
                 </div>
@@ -29,7 +29,7 @@ const AddFacility = () => {
                                 </div>
 
                                 <div className="ml-6">
-                                    <input type="text" id="email" class="bg-gray-50 w-[695px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="masukkan nomor rekening" required />
+                                    <input type="text" id="email" class="bg-gray-50 w-[500px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="masukkan nomor rekening" required />
 
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ const AddFacility = () => {
                         </div>
 
                         <div className="ml-[70px]">
-                            <input type="text" id="email" class="bg-gray-50 w-[1340px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan alamat fasilitas" required />
+                            <input type="text" id="email" class="bg-gray-50 w-[1150px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan alamat fasilitas" required />
 
                         </div>
                     </div>
@@ -56,7 +56,7 @@ const AddFacility = () => {
                         </div>
 
                         <div className="ml-[8px]">
-                            <input type="text" id="email" class="bg-gray-50 w-[300px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan nomor rekening" required />
+                            <input type="text" id="email" class="bg-gray-50 w-[500px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan nomor rekening" required />
 
                         </div>
                     </div>
@@ -73,7 +73,7 @@ const AddFacility = () => {
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
-                                <input type="search" id="default-search" class="block w-[300px] p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Opsional" required/>
+                                <input type="search" id="default-search" class="block w-[500px] p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Opsional" required/>
                                 <button type="submit" class="text-white absolute right-2.5 bottom-2.5  bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                             </div>
                         </div>
@@ -87,7 +87,7 @@ const AddFacility = () => {
                         </div>
 
                         <div className="ml-[35px]">
-                            <input class="block w-full text-sm text-gray-900 border w-[300px]  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
+                            <input class="block text-sm text-gray-900 border w-[500px]  border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
                             <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG (Maksimal 1 mb).</p>
 
                         </div>

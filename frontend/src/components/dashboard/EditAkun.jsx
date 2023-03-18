@@ -81,7 +81,7 @@ const EditAkun = () => {
   }, [auth]);
 
   return (
-    <div className="flex flex-col p-4 items-center bg-white rounded-lg shadow-xl">
+    <div className="ml-80 w-[100vh-320px] flex flex-col p-4 items-center bg-white rounded-lg shadow-xl">
       <h2 className="text-3xl font-bold mt=2">Edit Akun</h2>
       <div className="text-red-500 text-sm">{success}</div>
       <div className="w-11/12 mt-10 flex flex-row gap-10">
