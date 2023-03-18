@@ -1,4 +1,4 @@
-import { Facility, Transaction, TransactionDocument, TransactionPhoto, Users } from "../models/Association.js";
+import { Facility, FacilityPhoto, Transaction, TransactionDocument, TransactionPhoto, Users } from "../models/Association.js";
 ////////////////////
 // Transaction
 ////////////////////
@@ -22,7 +22,7 @@ const getAllTransaction = async (req, res) => {
 const getTransactionById = async (req, res) => {
   const { id } = req.params;
 
-  Transaction.findAll({
+  Transaction.findOne({
     where: { id },
     include: [
       { model: Users },
@@ -62,8 +62,34 @@ const getUserTransaction = async (req, res) => {
   })
 }
 
+const getTransactionFacility = (req, res) => {
+  const facilityId = req.params.facilityId;
+
+  Transaction.findAll({
+    where: {
+      facilityId,
+
+    },
+    include: [
+      {
+        model: Facility,
+        include: [FacilityPhoto]
+      }
+    ]
+  }).then(transaction => {
+    if (!transaction) {
+      return res.status(404).json({ msg: `Tidak ditemukan data transaksi`, payload: null })
+    }
+    return res.status(200).json({ msg: `Berhasil mendapatkan data transaksi`, payload: transaction })
+  }).catch(err => {
+    console.log(err)
+    res.status(400).json({ msg: `Gagal mendapatkan data transaksi`, payload: err })
+  })
+}
+
 export {
   getAllTransaction,
   getTransactionById,
-  getUserTransaction
+  getUserTransaction,
+  getTransactionFacility
 }
