@@ -21,9 +21,8 @@ const AboutUs = (props) => {
                             <h3>Tentang kami</h3>
                         </div>
 
-                        <div className="pt-10 font-roboto">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi suscipit illum minima eaque quod laudantium delectus repudiandae dolorem odit similique, distinctio molestias nam aspernatur laborum deserunt, ipsum ipsa neque iste.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi suscipit illum minima eaque quod laudantium delectus repudiandae dolorem odit similique, distinctio molestias nam aspernatur laborum deserunt, ipsum ipsa neque iste.</p>
+                        <div className="pt-10 font-roboto text-justify text-base">
+                            <p>Website ini dibentuk pada tahun 2023 saat kegiatan lomba Hackathon dan ditujukan untuk memudahkan masyarakat Balikpapan maupun dari luar Balikpapan untuk melihat dan menyewa fasilitas tempat pemerintah sesuai dengan kebutuhan. Pada website ini masyarakat dapat memesan fasilitas tempat yang mereka inginkan dan dapat menyesuaikan dengan jadwal yang telah ditentukan.</p>
                         </div>
 
                     </div>

@@ -81,8 +81,11 @@ const EditAkun = () => {
   }, [auth]);
 
   return (
-    <div className="ml-80 w-[100vh-320px] flex flex-col p-4 items-center bg-white rounded-lg shadow-xl">
-      <h2 className="text-3xl font-bold mt=2">Edit Akun</h2>
+    <div className="ml-80 w-[100vh-320px] flex flex-col p-4  bg-white rounded-lg shadow-xl">
+      <h2 className="text-3xl font-bold mt=2">Edit akun</h2>
+
+
+
       <div className="text-red-500 text-sm">{success}</div>
       <div className="w-11/12 mt-10 flex flex-row gap-10">
         <form className="w-full" onSubmit={(e) => editSubmit(e)}>
