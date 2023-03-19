@@ -27,7 +27,9 @@ const RiwayatTransaksi = () => {
 
   return (
     <div className="mt-8 ml-80 w-[100vh-320px]">
-      <div className="relative overflow-x-auto bg-gray-500 shadow-md sm:rounded-lg">
+        <h2 className="text-3xl font-bold mt=2">Riwayat Transaksi</h2>
+
+      <div className="relative mt-10 overflow-x-auto bg-gray-500 shadow-md sm:rounded-lg">
         {transaksi.length > 0 ? (
           <table className="w-full text-sm text-left text-gray-500">
             <thead className="text-xs text-gray-700 bg-blue-50">
