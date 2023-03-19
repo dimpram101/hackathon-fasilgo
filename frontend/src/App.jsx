@@ -17,7 +17,9 @@ function App() {
       getDecodedToken(token).then((res) => {
         setAuth({
           userId: res.userId,
-          fullname: res.fullname
+          fullname: res.fullname,
+          isAdmin: res.isAdmin,
+          isPengelola: res.isPengelola
         });
       });
     }

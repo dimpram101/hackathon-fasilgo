@@ -15,13 +15,13 @@ import { useContext, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 
 const Dashboard = () => {
-  const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (!auth) {
-      navigate("/login");
+    if(!localStorage.getItem("token")) {
+      navigate('/login')
     }
-  }, []);
+  })
 
   return (
     <div className="flex flex-row">

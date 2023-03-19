@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
+import AuthContext from "../../context/AuthContext";
 
 const ManajemenFasilitas = () => {
+  const { auth } = useContext(AuthContext);
   const [facilities, setFacilities] = useState([]);
   const [success, setSuccess] = useState("");
   const [refresh, refreshToggle] = useState(false);
@@ -15,9 +17,9 @@ const ManajemenFasilitas = () => {
         },
       })
       .then(() => {
-        refreshToggle((prev) => !prev)
-        setSuccess("Berhasil menghapus data")
-        setTimeout(() => setSuccess(false), 3000)
+        refreshToggle((prev) => !prev);
+        setSuccess("Berhasil menghapus data");
+        setTimeout(() => setSuccess(false), 3000);
       })
       .catch((err) => console.log(err));
   };
@@ -117,6 +119,7 @@ const ManajemenFasilitas = () => {
                 </td>
                 <td className="py-4 text-center ">
                   <button
+                    disabled={auth?.isPengelola}
                     onClick={() => deleteFasilitas(facility.id)}
                     className=" text-red-600 hover:underline"
                   >
@@ -129,9 +132,13 @@ const ManajemenFasilitas = () => {
         </table>
       </div>
       <div className="">
-        {success && (<>
-          <p className="text-green-600 font-bold text-sm">Berhasil menghapus fasilitas!</p>
-        </>)}
+        {success && (
+          <>
+            <p className="text-green-600 font-bold text-sm">
+              Berhasil menghapus fasilitas!
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

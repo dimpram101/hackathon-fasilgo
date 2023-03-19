@@ -58,9 +58,6 @@ const ManajemenTransaksi = () => {
                 <th scope="col" className="px-6 py-3">
                   <span>Edit</span>
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  <span>Hapus</span>
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -113,14 +110,6 @@ const ManajemenTransaksi = () => {
                     >
                       Edit
                     </Link>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <a
-                      href="#"
-                      className="font-medium text-red-600 hover:underline"
-                    >
-                      Hapus
-                    </a>
                   </td>
                 </tr>
               ))}

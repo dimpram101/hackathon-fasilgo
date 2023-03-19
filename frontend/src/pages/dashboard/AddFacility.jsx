@@ -71,24 +71,6 @@ const AddFacility = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    // api
-    //   .request({
-    //     url: "/admin/create-new-facility-photo",
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //       Authorization: "Bearer " + localStorage.getItem("token"),
-    //     },
-    //     data: {
-    //       file: file,
-    //     },
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //     window.location.reload();
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
   return (
