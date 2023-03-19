@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import api from "../../api/api";
 
 const AddFacility = () => {
@@ -11,6 +12,7 @@ const AddFacility = () => {
   const [pengelolaExist, setPengelolaExist] = useState(null);
   const deskripsi = useRef();
   const pengelola = useRef();
+  const navigate = useNavigate();
 
   const inputChange = (e) => {
     if (e.target.files) {
@@ -58,7 +60,7 @@ const AddFacility = () => {
           hargaSewa: hargaSewa.current.value,
           rekening: rekening.current.value,
           pengelolaId,
-          file
+          file,
         },
         headers: {
           "Content-Type": "multipart/form-data",
@@ -67,6 +69,7 @@ const AddFacility = () => {
       })
       .then((res) => {
         console.log(res);
+        navigate('/dashboard/manajemen-fasilitas')
       })
       .catch((err) => {
         console.log(err);

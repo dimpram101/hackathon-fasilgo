@@ -69,10 +69,11 @@ export const createTransaction = async (req, res) => {
 export const insertTransactionPayment = async (req, res) => {
   const { transactionId, photoTitle } = req.body;
   const file = req.file;
+  const filename = file.originalname.split('.')[0];
 
   TransactionPhoto.create({
     transactionId,
-    photoTitle,
+    photoTitle: filename,
     path: file.path
   }).then(() => res.status(201).json({ msg: "Berhasil menambahkan bukti transaksi!" }))
     .catch(err => res.status(400).json({ msg: "Gagal menambahkan bukti transaksi!", payload: err }))

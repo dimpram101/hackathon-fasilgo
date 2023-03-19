@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const Navbar = (props) => {
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
 
   const [showMenu, setShowMenu] = useState(false);
@@ -16,6 +16,7 @@ const Navbar = (props) => {
   const logout = () => {
     localStorage.removeItem("token");
     setAuth(null);
+    // window.location.reload();
   }
 
   return (

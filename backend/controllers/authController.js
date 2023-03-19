@@ -1,4 +1,4 @@
-import { Users } from "../models/Association.js";
+import { Facility, Users } from "../models/Association.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -43,7 +43,8 @@ const login = async (req, res) => {
     const user = await Users.findOne({
       where: {
         email
-      }
+      },
+      include: [Facility]
     });
 
     console.log(user)
@@ -54,7 +55,9 @@ const login = async (req, res) => {
 
     const accessToken = jwt.sign({
       userId: user.id,
-      fullname: user.fullname
+      fullname: user.fullname,
+      isAdmin: user.isAdmin,
+      isPengelola: user.facilities.length > 0 ? true : false
     }, process.env.ACCESS_SECRET_KEY, { expiresIn: '3h' })
 
     return res.status(200).json({
@@ -72,8 +75,8 @@ const login = async (req, res) => {
 
 const logout = (req, res) => {
   res.status(200).json({
-  msg: "Berhasil Logout"
-})
+    msg: "Berhasil Logout"
+  })
 }
 
 const getDecodedToken = (req, res) => {
@@ -83,12 +86,15 @@ const getDecodedToken = (req, res) => {
     if (err) return res.status(403).json({ payload: err });
     const userId = decoded.userId;
     const fullname = decoded.fullname;
-    
+    const isAdmin = decoded.isAdmin;
+    const isPengelola = decoded.isPengelola;
     return res.status(200).json({
       msg: "Authorized",
       payload: {
         userId,
-        fullname
+        fullname,
+        isAdmin,
+        isPengelola
       }
     })
   })

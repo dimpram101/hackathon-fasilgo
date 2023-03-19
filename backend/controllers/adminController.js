@@ -2,6 +2,7 @@ import { userRegistrationSchema } from "../utils/joyVerification.js";
 import { Users, Facility, FacilityPhoto, Transaction, KTPUser } from "../models/Association.js";
 import bcrypt from "bcrypt";
 import UserKTP from "../models/KTPUser.js";
+import mailTransporter from "../utils/mail/mails.js";
 
 /////////////////
 // Facility
@@ -138,12 +139,13 @@ const createAkunPengelola = async (req, res) => {
     const genSalt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(user.password, genSalt);
 
-    User.create({
+    Users.create({
       ...user,
       password: hashPassword
     }).then(user => res.status(201).json({ msg: "Berhasil membuat akun!", payload: user }));
 
   } catch (err) {
+    console.log(err)
     return res.status(400).json({ err });
   }
 }
@@ -151,7 +153,7 @@ const createAkunPengelola = async (req, res) => {
 const deleteAkunPengelola = async (req, res) => {
   const { pengelolaId } = req.body
 
-  User.destroy({
+  Users.destroy({
     where: {
       id: pengelolaId
     }
@@ -178,6 +180,7 @@ const getAkunPengelola = (req, res) => {
 }
 
 const updateTransaction = async (req, res) => {
+  const userId = res.locals.userId
   const { id } = req.params;
   const { status, catatan } = req.body;
   // console.log(status,catatan)
@@ -187,21 +190,32 @@ const updateTransaction = async (req, res) => {
 
   try {
     let transaction = await Transaction.findOne({
-      where: { id }
+      where: { id },
+      include: [
+        {
+          model: Users,
+          attributes: ["email"]
+        },
+        {
+          model: Facility,
+          attributes: ["namaFasilitas"]
+        }
+      ]
     })
 
     if (!transaction) return res.status(404).json({ msg: "Tidak ditemukan data transaksi!" })
     transaction = await transaction.update({ status, catatan });
-    // console.log(transaction)
-
-    // await mailTransporter.sendMail({
-    //   from: 'dimpram10@gmail.com',
-    //   to: "dimas2004211@gmail.com",
-    //   subject: "Update Pengajuan Penyewaan Fasilitas",
-    //   text: "Halo, Status pengajuan kamu telah diperbaharui, yuk cek status pengajuan kamu pada web!"
-    // }).then(() => {
-    //   console.log("Email telah terkirim!")
-    // })
+    // console.log(transaction.facility.namaFasilitas)
+    // if (status == "Disetujui") {
+    await mailTransporter.sendMail({
+      from: 'dimpram10@gmail.com',
+      to: "dimas2004211@gmail.com",
+      subject: "Update Pengajuan Penyewaan Fasilitas",
+      text: `Halo, Status pengajuan kamu pada ${transaction.facility.namaFasilitas} telah diperbaharui, yuk cek status pengajuan kamu pada web FasilGo!`
+    }).then(() => {
+      console.log("Email telah terkirim!")
+    })
+    // }
 
     return res.status(200).json({ msg: "Transaksi berhasil diperbaharui!", payload: transaction })
   } catch (err) {

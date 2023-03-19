@@ -87,37 +87,6 @@ const ManajemenFasilitas = () => {
                 <th scope="col" className="px-6 py-3">
                   Hapus
                 </th>
-                <td className="px-6 py-4 break-all text-center">
-                  {facility.namaFasilitas}
-                </td>
-                <td className="px-6 py-4 break-all">{facility.alamat}</td>
-                <td className="px-6 py-4 break-all text-center">
-                  Rp.{facility.hargaSewa}
-                </td>
-                <td className="px-6 py-4 break-all">{facility.deskripsi}</td>
-                <td className="px-6 py-4 break-all text-center">
-                  {facility.rekening}
-                </td>
-                <td className="px-6 py-4 break-all text-center">
-                  {facility.user.fullname}
-                </td>
-                <td className="py-4 text-center break-all">
-                  <Link
-                    to={"/dashboard/manajemen-fasilitas/edit/" + facility.id}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Edit
-                  </Link>
-                </td>
-                <td className="py-4 text-center ">
-                  <button
-                    disabled={auth?.isPengelola}
-                    onClick={() => deleteFasilitas(facility.id)}
-                    className=" text-red-600 hover:underline"
-                  >
-                    Hapus
-                  </button>
-                </td>
               </tr>
             </thead>
             <tbody>
