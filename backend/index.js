@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
 app.use(indexRoute)
+
 // try {
 //   await db.sync({ force: true });
 //   console.log("db connected")
