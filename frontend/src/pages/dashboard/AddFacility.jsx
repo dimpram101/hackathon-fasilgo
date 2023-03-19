@@ -108,7 +108,7 @@ const AddFacility = () => {
 
             <div className="ml-10">
               <div className="mb-6 flex">
-                {/* Nomor rekening */}
+                {/* Harga sewa */}
                 <div className="mt-2">
                   <label
                     for="email"
@@ -123,8 +123,8 @@ const AddFacility = () => {
                     ref={hargaSewa}
                     type="text"
                     id="email"
-                    class="bg-gray-50 w-[500px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="masukkan nomor rekening"
+                    class="bg-gray-50 w-[600px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="masukkan harga sewa tempat"
                     required
                   />
                 </div>
@@ -147,7 +147,7 @@ const AddFacility = () => {
                 ref={alamat}
                 type="text"
                 id="email"
-                class="bg-gray-50 w-[1150px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 w-[1240px] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Masukkan alamat fasilitas"
                 required
               />
@@ -288,7 +288,7 @@ const AddFacility = () => {
               ></textarea>
             </div>
           </div>
-          <div className="mt-32">
+          <div className="mt-20">
             <button
               type="submit"
               class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

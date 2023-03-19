@@ -21,9 +21,9 @@ const SliderFacility = () => {
     };
 
     const sliderContents = [
-        { url: "./assets/dome.jpg", nama1: "BSCC", nama2: "Dome" },
-        { url: "./assets/krb.png", nama1: "Kebun", nama2: "Raya" },
-        { url: "./assets/pantai-manggar.png", nama1: "Pantai", nama2: "Manggar" },
+        { url: "./assets/dome.jpg", nama1: "BSCC", nama2: "Dome Balikpapan", desk: "Gedung ini mampu menampung sekitar 5000 orang dengan sirkulasi 40 persen. Lantai dasar dapat menampung 60 stan pameran dan lantai dua 30 stan pameran. Kapasitas tempat duduk adalah lebih dari 2500 dan untuk area tribun 824 penonton biasa dan 160 orang penonton/ tamu VIP."},
+        { url: "./assets/krb.png", nama1: "Kebun", nama2: "Raya Balikpapan", desk: "Kebun Raya Balikpapan merupakan salah satu objek wisata di kota Balikpapan dan memiliki kawasan bumi perkemahan yang biasa digunakan oleh komunitas-komunitas tertentu. Pemerintah Kota Balikpapan bekerjasama dengan Pusat Konservasi Tumbuhan Kebun Raya Bogor dan Balai Besar Penelitian Dipterocarpaceae Dephut untuk kegiatan pembangunan Kebun Raya Balikpapan." },
+        { url: "./assets/pantai-manggar.png", nama1: "Pantai", nama2: "Manggar Balikpapan", desk:"Kawasan pantai ini biasa digunakan untuk mengadakan festival yang memiliki massa yang besar dengan nuansa pesisir pantai dan beberapa tempat cocok untuk healing" },
     ];
 
     return (
@@ -52,8 +52,8 @@ const SliderFacility = () => {
                                                     <h2 className="font-extrabold">{image.nama1}</h2>
                                                     <h2 className="font-extralight">{image.nama2}.</h2>
                                                 </div>
-                                                <div className="pt-10 w-[500px]">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, molestias! Quam, asperiores debitis eveniet quas nam aliquid expedita necessitatibus quo sed ea impedit, eum iusto deserunt quisquam velit temporibus tenetur.</p>
+                                                <div className="pt-10 w-[500px] text-justify">
+                                                    <p >{image.desk}</p>
                                                 </div>
 
                                                 <div className="pt-20">

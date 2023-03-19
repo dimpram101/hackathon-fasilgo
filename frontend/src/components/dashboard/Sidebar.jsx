@@ -20,7 +20,7 @@ const Sidebar = () => {
   return (
     <div className={`flex flex-col p-2 w-80 fixed bg-[#88C3FF] h-screen`}>
       <div className="mx-auto mt-3">
-        <Link to={"/dashboard"} onClick={() => setIsFasil(false)}>
+        <Link to={"/"} onClick={() => setIsFasil(false)}>
           <div className="flex flex-row gap-3 items-center mt-6 ">
             <img src={"/fasilgo.png"} alt="fasilgo.png" class="h-10" />
             <h2 className="text-4xl font-semibold">FasilGO</h2>
