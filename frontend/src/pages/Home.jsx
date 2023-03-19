@@ -3,12 +3,25 @@ import SliderFacility from "../components/SliderFacility";
 import GuideRen from "../components/GuideRen";
 import AboutUs from "../components/AboutUs";
 import Footer from "../components/Footer";
+import React, {useRef} from "react";
 
-const Home = (props) => {
+
+const Home = () => {
+  const linkRef = useRef();
+  const reff = useRef();
+  
+  const goto = (ref) => {
+    scrollTo({
+      top: ref.offsetTop,
+      left: 0,
+      behavior:'smooth'
+    })
+  }
+
   return (
     <>
       <div className="bg-[#F0F0F0] h-full">
-        <Navbar />
+        <Navbar pushButtonPaduan={() => goto(linkRef.current)} pushButtonAbout={() => goto(reff.current)} />
         <div
           className="h-60 md:h-[500px] lg:h-[700px]  xl:h-[780px] bg-cover lg:bg-center xl:bg-center"
           style={{ backgroundImage: 'url("./assets/DashBoard.jpg")' }}
@@ -55,11 +68,11 @@ const Home = (props) => {
         </div>
 
         <div className="mt-[100px] p-20 bg-white">
-          <GuideRen />
+          <GuideRen guideRef={linkRef} />
         </div>
 
         <div className="mt-[100px]">
-          <AboutUs />
+          <AboutUs aboutRef={reff} />
         </div>
         <div className="mt-36">
           <Footer />

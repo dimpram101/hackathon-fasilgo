@@ -3,9 +3,11 @@ import { useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
+
 const Navbar = (props) => {
   const { auth } = useContext(AuthContext);
-  // console.log(auth)
+
+
   const [showMenu, setShowMenu] = useState(false);
   const handleClick = () => {
     setShowMenu(!showMenu);
@@ -133,6 +135,7 @@ const Navbar = (props) => {
               </li>
               <li>
                 <a
+                  onClick={props.pushButtonPaduan}
                   href="#"
                   className=" block font-roboto text-lg py-2 pl-3 pr-4 text-gray-700 rounded hover:text-black hover:bg-gray-100 md:hover:bg-transparent  md:p-0"
                 >
@@ -141,6 +144,7 @@ const Navbar = (props) => {
               </li>
               <li>
                 <a
+                  onClick={props.pushButtonAbout}
                   href="#"
                   className="lock font-roboto text-lg py-2 pl-3 pr-4 text-gray-700 rounded hover:text-black hover:bg-gray-100 md:hover:bg-transparent  md:p-0"
                 >

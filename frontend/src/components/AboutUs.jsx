@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import 'aos/dist/aos.css'
 
-const AboutUs = () => {
+const AboutUs = (props) => {
 
     useEffect(() => {
         Aos.init({ duration: 1000 });
@@ -16,8 +16,8 @@ const AboutUs = () => {
                         <img src="./assets/about-us.png" alt="" />
                     </div>
 
-                    <div className="pl-10">
-                        <div className="font-roboto pt-20 font-bold text-3xl">
+                    <div  className="pl-10">
+                        <div ref={props.aboutRef} className="font-roboto pt-20 font-bold text-3xl">
                             <h3>Tentang kami</h3>
                         </div>
 

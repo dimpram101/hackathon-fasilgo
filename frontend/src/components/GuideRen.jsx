@@ -3,7 +3,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'
  
 
-const GuideRen = () => {
+const GuideRen = (props) => {
     useEffect(() => {
         AOS.init({duration: 1500})
     }, [])
@@ -28,7 +28,7 @@ const GuideRen = () => {
         <>
             <div>
                 <div>
-                    <h3 className="font-inter text-4xl text-center tracking-tighter font-extrabold ">Panduan Sewa Tempat</h3>
+                    <h3 ref={props.guideRef} className="font-inter text-4xl text-center tracking-tighter font-extrabold ">Panduan Sewa Tempat</h3>
                 </div>
                 <div data-aos="fade-up" >
                     <div className=" w-[550px] mx-auto drop-shadow-2xl ">
